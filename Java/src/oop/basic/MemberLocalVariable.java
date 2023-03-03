@@ -19,9 +19,21 @@ package oop.basic;
 
 public class MemberLocalVariable {
 
+	int a; // 멤버 변수
+	
+	void printNumber(int c) {
+		int b  = 1; // 지역 변수
+		System.out.println("멤버 변수 a : " + a);
+		System.out.println("지역 변수 b : " + b);
+		System.out.println("매개 변수 c : " + c);
+	}
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		MemberLocalVariable m = new MemberLocalVariable();
+		
+		m.printNumber(4);
+		
 	}
 
 }
