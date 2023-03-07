@@ -39,6 +39,11 @@ public class MainClass {
 		Hunter h1 = new Hunter("헌터짱짱맨");
 		h1.characterInfo();
 		
+		System.out.println("---------------------------");
+		
+		w1.attack(m1);
+		m1.attack(h1);
+		
 	}
 
 }
