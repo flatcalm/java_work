@@ -42,7 +42,7 @@ public class Player {
 		this.hp = hp;
 	}
 	
-	void attack(Player target) {
+void attack(Player target) {
 		
 //		System.out.println("target : " + target);
 //		System.out.println("this : " + this);

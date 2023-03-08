@@ -1,4 +1,4 @@
-package oop.this_super;
+package oop.poly.player;
 
 public class Hunter extends Player {
 	
