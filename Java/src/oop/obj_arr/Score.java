@@ -20,6 +20,16 @@ public class Score {
 	private int total;
 	private double avg;
 	
+	public Score(String name, int kor, int eng, int math) {
+		super();
+		this.name = name;
+		this.kor = kor;
+		this.eng = eng;
+		this.math = math;
+		this.total = kor + eng + math;
+		this.avg = this.total / 3.0;
+	}
+	
 	public Score(String name, int kor, int eng, int math, int total, double avg) {
 		super();
 		this.name = name;
@@ -31,7 +41,7 @@ public class Score {
 	}
 	
 	public void scoreInfo() {
-		System.out.println(" 학생의 정보");
+		System.out.println("학생의 정보");
 		System.out.printf("이름 : %s 국어 : %d점 영어 : %d점 수학 : %d점 총점 : %d점 평균 : %.2f점\n", 
 				name, kor, eng, math, total, avg);
 	}
