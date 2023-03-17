@@ -78,29 +78,35 @@ public class LottoSimulator {
 		 */
 		int count =  0;
 		
-		ArrayList<Integer> lottoList = new ArrayList<>(lotto);
-		ArrayList<Integer> myLottoList = new ArrayList<>(myLotto);
-		Collections.sort(lottoList);
-		Collections.sort(myLottoList);
-		
-		for(int i=0; i<lottoList.size(); i++) {
-			for(int j=0; j<myLottoList.size(); j++) {
-				if(lottoList.get(i)==myLottoList.get(j)) {
-					count++;
-				} else {
-					continue;
-				}
-			}
+//		ArrayList<Integer> lottoList = new ArrayList<>(lotto);
+//		ArrayList<Integer> myLottoList = new ArrayList<>(myLotto);
+//		Collections.sort(lottoList);
+//		Collections.sort(myLottoList);
+//		
+//		for(int i=0; i<lottoList.size(); i++) {
+//			for(int j=0; j<myLottoList.size(); j++) {
+//				if(lottoList.get(i)==myLottoList.get(j)) {
+//					count++;
+//				} else {
+//					continue;
+//				}
+//			}
+//		}
+		for(int n : myLotto) {
+			if(lotto.contains(n)) count++;
 		}
+		
 		if(count==6) prize1++;
 		else if(count==5) {
-			for(int i=0; i<myLottoList.size(); i++) {
-				if(myLottoList.get(i) == bonus) {
-					prize2++;
-				} else {
-					prize3++;
-				}
-			}
+			if(myLotto.contains(bonus)) prize2++;
+			else prize3++;
+//			for(int i=0; i<myLottoList.size(); i++) {
+//				if(myLottoList.get(i) == bonus) {
+//					prize2++;
+//				} else {
+//					prize3++;
+//				}
+//			}
 		}
 		else if(count==4) prize4++;
 		else if(count==3) prize5++;
@@ -117,7 +123,8 @@ public class LottoSimulator {
 		int bonus = createBonusNum(winNum);
 		System.out.println("보너스 번호 : " + bonus);
 		
-		long cost = 0;
+		int paper = 0;
+		long cost = 1000;
 		
 		while(true) {
 			
@@ -130,7 +137,7 @@ public class LottoSimulator {
 			
 //			System.out.println("로또를 구매합니다.");
 			Set<Integer> myLotto = createLotto();
-			cost += 1000;
+			paper++;
 			
 			checkLottoNumber(winNum, myLotto, bonus);
 			
@@ -138,9 +145,10 @@ public class LottoSimulator {
 		}
 		
 		System.out.println("축하합니다! 1등에 당첨되셨습니다!");
-		System.out.printf("누적 당첨 횟수\n2등 : %d\n3등 : %d\n4등 : %d\n5등 : %d\n꽝 : %d\n"
+		System.out.printf("누적 당첨 횟수\n2등 : %d번\n3등 : %d번\n4등 : %d번\n5등 : %d번\n꽝 : %d번\n"
 				, prize2, prize3, prize4, prize5, failCnt);
-		System.out.println("로또 구입한 총 비용 : " + cost);
+		System.out.println("로또 구입한 장 수 : " + paper + "장");
+		System.out.println("로또 구입한 총 비용 : " + cost*paper + "원");
 		
 	}
 
